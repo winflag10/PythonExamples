@@ -1,0 +1,9 @@
+TopLeft,You enter a new room,None,TopMiddle,MiddleLeft,None,0,sword+health potion+health potion,slime;
+TopMiddle,You enter a new room,None,TopRight,MiddleMiddle,TopLeft,0,0,0;
+TopRight,You enter a new room,None,None,MiddleRight,TopMiddle,0,0,0;
+MiddleLeft,You enter a new room,TopLeft,MiddleMiddle,BottomLeft,None,0,0,0;
+MiddleMiddle,You enter a new room,TopMiddle,MiddleRight,BottomMiddle,MiddleLeft,0,0,skeleton;
+MiddleRight,You enter a new room,TopRight,None,BottomRight,MiddleMiddle,0,0,0;
+BottomLeft,You enter a new room,MiddleLeft,BottomMiddle,None,None,0,0,0;
+BottomMiddle,You enter a new room,MiddleMiddle,BottomRight,None,BottomLeft,0,0,0;
+BottomRight,You enter a new room,MiddleRight,None,None,BottomMiddle,0,0,0;

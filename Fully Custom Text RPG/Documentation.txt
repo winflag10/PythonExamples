@@ -1,0 +1,148 @@
+Welcome to the Documentation for TextAdventure V2.0 (placeholder name)
+This Document consists of descriptions of all useable classes and functions available for use
+It will be updated as new features are released.
+Please read this and only write code in the latter section of the TextAdventure.py file.
+Enjoy!
+ps.Ignore the data file. You can have a look if you want but dont modify code as this will break the classes
+
+1.0 
+player class:
+To inititate an instance of this class use:
+var_name = classes.class_name(Name)
+where var_name is the name of the variable,
+class_name is a user selection of their choice of playable class(see 1.1),
+and name is a string that defines the in game name of the player.
+example:
+archer = classes.archer("John")
+
+1.1
+playable classes:
+In the current version there is only 1 test class this is the archer(subject to change)
+each class has stats and set items and abilities to start
+
+1.1.1
+stats:
+There are currently 6 stats in the game:
+ID:Name:description
+1:health:amount of base hp this char has
+2:strength:will assist in combat
+3:speed:ability to avoid enemy confrontation
+4:xp:progress to next level
+5:level:level of expertise charcter holds
+6:inventory slots:how many item slots you have
+
+1.2
+print(var_name)
+This will print out the players player card with all their stats and inventory
+
+1.3
+var_name.give_xp(amount)
+This will add xp to the player passed in to var_name and will level them up if the 
+level quantity is reached.
+
+1.4
+var_name.set_stat(statID, amount)
+(see 1.1.1) for stat IDs)
+will set a players stat of the ID to the amount given
+
+1.5
+var_name.give_stat(statID, amount)
+same as 1.4 but will add to the stat not set to the amount
+
+1.6
+var_name.heal(amount)
+will add to the players health the amount given and print out a message
+
+1.7
+var_name.damage(amount)
+will deduct the players health by the amount given and print out a message
+
+1.8
+var_name.kill()
+kills the player and drops all non-soulbound items in the room 
+WIP
+
+1.9
+var_name.give(item)
+gives the player the item specified.
+If they do not have enough inventory it will drop on the floor
+
+1.10
+var_name.drop(item)
+removes item from players inventory and places it in the room
+prints message to say irem has been dropped
+
+1.11
+var_name.remove(item)
+same as 1.10 but does not print message
+
+1.12
+var_name.add_item(item)
+same as 1.9 but does not print message
+
+1.13
+var_name.equip(weapon)
+will dequip any already eqipped weapon
+will equip the chosen weapon to the player if they have it in their inventory
+
+1.14
+var_name.dequip()
+dequips any weapon from the player
+
+1.15
+var_name.equipped()
+prints what weapon the player has equipped
+
+2.0
+item class:
+To inititate an instance of this class use:
+var_name = items.item_type_name(item_type_arguments)
+where var_name is the name of the variable,
+item_type_name is the type of item being created(see 2.1)
+and item_type_arguments is the needed info for an item of this type
+
+2.1
+item types
+there are currently 3 types of item in the game
+
+a) consumables
+These items are useable and will give a certain stat when used
+to create one use var_name = items.consumable(itemId,name,statID(see1.1.1),stat_value,inventory_space, soulbound, description)
+where itemId is a unique number and soulbound is whether it is dropped on death
+
+b) weapons 
+These items are equippable and assist in combat
+to create one use var_name = items.weapon(itemId,name,damage,is_ranged,inventory_space, soulbound, description)
+where ranged is not used at this point in time but must be included as True or False
+
+c)quest items
+These items do not drop on death, take no inventory space and are used to finish a quest or get in a room
+to create one use var_name = items.quest_item(itemId,name,description)
+
+2.2
+item_var_name.consume(var_name)
+will use a consumable if in the player inventory if not will print a message
+example:
+health_potion.consume(archer)
+
+3.0
+room class
+This class hasn't been written yet
+
+4.0
+enemy class
+This class hasnt been written yet
+
+5.0
+map_gen class
+this class hasnt been written yet
+
+6.0
+creating a game
+To create a game for the text adventure generator to play go to data/games and duplicate the example 
+game renamed the name of your game. Inside there is a use guide which you must follow to 
+create items,classes, enemies and rooms
+
+
+
+

@@ -1,0 +1,24 @@
+-Make a python file that allows for easy game creation with auto file creation.
+-Test if enterable before entering a room , this will take a special file for each room that contains information about the stats needed to enter it
+-Add in armour
+-Add in support for multiple of the same enemy or item in a room
+-Add in stat tracking eg.. enemy kills, items picked up, damage done etc
+-Add in custom boss handling
+-Add in end rooms and end sequence
+-Give weapons toggleable "stars" which randomly generate stats up to +- 20% of their base stats
+-Create a config file that allows users a simple place to toggle functions like weapon stars
+-Create ability class that allows custom abilities to be given to classes
+-Move classes over to non-hardcoded text files
+-integrate slow text
+-coloured text
+
+When Done:
+1.TEST EVERYTHING FULLY
+2.FIX MISTAKES... THERE WILL BE LOTS
+3.change item drop randomisation to use numbers not lists of True/False for efficiency
+4.write full documentation for EVERYTHING
+5.give to james to look through
+6.Modify
+
+eventually:
+1.Turn game into .exe for distribution?

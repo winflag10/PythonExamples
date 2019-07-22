@@ -1,0 +1,332 @@
+# File name:Conways.py
+#: import FadeTransition  kivy.uix.screenmanager.FadeTransition
+#https://www.nice.org.uk/brand/colour-palette
+
+ 
+ScreenManagement:
+	id:main
+	transition:FadeTransition()
+	MainScreen:
+		id:main
+	ConwaysScreen:
+		id:conways
+	SettingsScreen:
+		id:settings
+	
+
+<SettingsScreen>
+	name:"settings"
+	SettingsLayout:
+		id:settings
+
+<SettingsLayout>
+	Label:  #Background Colour
+		canvas.before:
+			Color:
+				rgb:0/255,70/255,80/255
+			Rectangle:
+				pos:self.pos
+				size:self.size
+	Button:  #Done button
+		size_hint:(0.18,0.1)
+		pos:15,10
+		text:"Done"
+		on_press:app.root.current = "main"
+	Label:  #Seperation lines
+		canvas:
+			Color:
+				rgb:1,1,1
+			Line:  #Centre Line
+				points:(root.width/2,20,root.width/2,root.height-65)
+			Line:  #Settings underline
+				points:(330,root.height-47,root.width-330,root.height-47)
+			Line:  #Alive Cell underline
+				points:(460,498,680,498)
+			Line:  #Alive Cell underline
+				points:(145,498,245,498)
+	Label:  #Settings Text
+		font_size:40
+		text:"Settings"
+		size_hint:(0.2,0.1)
+		pos:root.width/2-self.width/2,root.height-self.height
+	Label:  #Alive Colour Text
+		font_size:30
+		text:"Alive Cell Colour"
+		size_hint:(0.3,0.1)
+		pos:450,480
+	Label:  #Ruleset Text
+		font_size:30
+		text:"Ruleset"
+		size_hint:(0.3,0.1)
+		pos:75,480
+	#######################RGB VALUES FOR NEW ALIVE COLOUR
+	BoxLayout:
+		size_hint:(0.3,0.2)
+		pos:450,400
+		Slider:
+			min:0
+			max:255
+			step:1
+			value_track:True
+			value_track_color:(255,0,0,1)
+			sensitivity:"handle"
+			on_value:root.update("red",root,*args)
+	Label:
+		size_hint:(0.1,0.1)
+		id:red
+		text:"0"
+		pos:700,430
+		font_size:25
+		color:1,0,0,1
+	BoxLayout:
+		size_hint:(0.3,0.2)
+		pos:450,300
+		Slider:
+			min:0
+			max:255
+			step:1
+			value_track:True
+			value_track_color:(0,255,0,1)
+			sensitivity:"handle"
+			on_value:root.update("green",root,*args)
+	Label:
+		size_hint:(0.1,0.1)
+		id:green
+		text:"0"
+		pos:700,330
+		font_size:25
+		color:0,1,0,1
+	BoxLayout:
+		size_hint:(0.3,0.2)
+		pos:450,200
+		Slider:
+			min:0
+			max:255
+			step:1
+			value_track:True
+			value_track_color:(0,0,255,1)
+			sensitivity:"handle"
+			on_value:root.update("blue",root,*args)
+	Label:
+		size_hint:(0.1,0.1)
+		id:blue
+		text:"0"
+		pos:700,230
+		font_size:25
+		color:0.082,0.412,0.78,1
+	Label: #Colour box live update
+		size_hint:(0.3,0.3)
+		id:live_color
+		canvas.before:
+			Color:
+				rgb:0/255,0/255,0/255
+			Rectangle:
+				pos:535,80
+	Label: #Colour box live update
+		size_hint:(0.3,0.3)
+		id:current_color
+		canvas.before:
+			Color:
+				rgb:122/255,207/255,214/255
+			Rectangle:
+				pos:425,80
+	Button:
+		font_size:20
+		pos:15,100
+		on_press:root.show_load(app.root)
+		size_hint:(0.18,0.1)	
+		text:"Load Ruleset"
+	Button:
+		font_size:20
+		pos:175,100
+		on_press:root.show_save(app.root)
+		size_hint:(0.26,0.1)	
+		text:"Save Current Ruleset"
+	############################
+	Button: #Apply Btn
+		text:"Apply"
+		pos:650,86+self.height
+		size_hint:(0.15,0.075)
+		on_press:root.apply_color(app.root)
+	Button: #Default Btn
+		text:"Default"
+		pos:650,80+4
+		size_hint:(0.15,0.075)
+		on_press:root.default(app.root)
+	Label:
+		size_hint:(0.1,0.1)
+		text:"Current"
+		font_size:20
+		pos:435,165
+	Label:
+		size_hint:(0.1,0.1)
+		text:"New"
+		font_size:20
+		pos:545,165
+		
+	########RuleSet Creation####
+	TextInput:
+		id:Rule1
+		multiline:False
+		size_hint:0.38,0.06
+		pos:50,400
+		text:"[0, 1, 4, 5, 6, 7, 8]"
+		on_text:root.update_rules(app.root)
+	TextInput:
+		id:Rule2
+		multiline:False
+		size_hint:0.38,0.06
+		pos:50,300
+		text:"[2, 3]"
+		on_text:root.update_rules(app.root)
+	TextInput:
+		id:Rule3
+		multiline:False
+		size_hint:0.38,0.06
+		pos:50,200
+		text:"[3]"
+		on_text:root.update_rules(app.root)
+	Label:
+		size_hint:(0.1,0.1)
+		text:"Amount needed to Die"
+		font_size:20
+		pos:140,420
+	Label:
+		size_hint:(0.1,0.1)
+		text:"Amount needed to live on"
+		font_size:20
+		pos:140,320
+	Label:
+		size_hint:(0.1,0.1)
+		text:"Amount needed to be born"
+		font_size:20
+		pos:140,220	
+	Label:
+		size_hint:(0.4,0.1)
+		text:"Hint: seperate numbers with \n',' to use multiple in one rule!"
+		font_size:15
+		pos:120,20
+	########################
+	
+	
+	
+<MainScreen>:
+	name: "main"
+	MainMenuLayout:
+
+<MainMenuLayout>	
+	Label:
+		canvas.before:
+			Color:
+				rgb:0/255,70/255,80/255
+			Rectangle:
+				pos:self.pos
+				size:self.size
+				
+				
+	Button:
+		on_press:app.root.current = "conways"
+		text:"Play"
+		size_hint:(0.3,0.15)
+		pos:root.width/2-self.width/2,root.height/2-self.height/2
+	Button:
+		text:"Settings"
+		size_hint:(0.3,0.15)
+		pos:root.width/2-self.width/2,root.height/2-self.height/2-150
+		on_press:app.root.current = "settings"
+	Image:
+		source:"assets/banner.png"
+		size_hint:(0.75,0.75)
+		pos:root.width/2-self.width/2,220
+	Label:
+		size_hint:(0.3,0.1)
+		text:"Re-Created in Kivy Python by John Watkins"
+		font_size:15
+		pos:318,380
+		color:0,0,0,1
+		
+	
+<ConwaysScreen>:
+	name: "conways"
+	ConwaysLayout:
+		id:conways
+
+<ConwaysLayout>:
+	
+	mywidge:circle
+	orientation:"horizontal"
+	CircleDrawer:
+		id:circle
+		size:600,600
+		size_hint:(None,None)
+	BoxLayout:
+		orientation:"vertical"
+		Button:
+			text:"Random"
+			on_press:root.random()
+		Button:
+			text:"Clear"
+			on_press:root.clear()
+		Button:
+			text:"Play"
+			on_press:root.play_pause(self)
+		Button:
+			text:"Main Menu"
+			on_press:app.root.current = "main"
+			on_press:root.clear()
+
+<Button>:
+	font_size:30
+	color:1,1,1,0.65
+<CircleDrawer>:
+	id:circleDraw
+
+<LoadDialog>:
+    BoxLayout:
+        size: root.size
+        pos: root.pos
+        orientation: "vertical"
+        FileChooserIconView:
+            id: filechooser
+			rootpath:"assets/RuleSets"	
+
+        BoxLayout:
+            size_hint_y: None
+            height: 30
+            Button:
+                text: "Cancel"
+                on_release: root.cancel()
+
+            Button:
+                text: "Load"
+                on_release: root.load(filechooser.path, filechooser.selection,app.root)
+
+
+<SaveDialog>:
+    text_input: text_input
+    BoxLayout:
+        size: root.size
+        pos: root.pos
+        orientation: "vertical"
+        FileChooserIconView:
+            id: filechooser
+			rootpath:"assets/RuleSets"
+            on_selection: text_input.text = self.selection and self.selection[0] or ''
+
+        TextInput:
+            id: text_input
+            size_hint_y: None
+            height: 30
+            multiline: False
+			text:".rs"
+
+        BoxLayout:
+            size_hint_y: None
+            height: 30
+            Button:
+                text: "Cancel"
+                on_release: root.cancel()
+
+            Button:
+                text: "Save"
+                on_release: root.save(filechooser.path, text_input.text,app.root)

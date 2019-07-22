@@ -1,0 +1,1 @@
+slime_ball:80;health_potion:50

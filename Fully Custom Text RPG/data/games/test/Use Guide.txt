@@ -1,0 +1,23 @@
+1.Items:
+in the items text file
+-each item goes on a new line
+-formatted in form:
+consumable:0:Health Potion:1:2:1:False:\nA small potion that recovers 3 Health;
+where data between the first : and ; follows format in documentation
+
+2.Classes:
+These must be hardcoded in at this point in time so cannot be created here
+
+3.Enemies:
+in the enemies text file
+-each item goes on a new line
+-formatted in form:
+name:is_boss:max_xp_drop:health:strength:speed:description;
+once this is done a loot table has to be created for the enemy in the loot_tables folder
+there is a help sheet in this file to explain this process
+
+4.Rooms:
+
+ID:room_name:entry_desc:item1,item2,item3:
+
+These haven't been created yet

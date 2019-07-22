@@ -1,0 +1,4 @@
+x7,o8,x4,o5,x1,xwin
+x9,o8,x1,o5,x3,o2,owin
+x7,o5,x8,o6,x4,o2,x3,o1,x9,xwin
+x;7,o;4,x;8,o;5,x;9,xwin

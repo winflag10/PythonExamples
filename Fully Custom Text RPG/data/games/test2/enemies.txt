@@ -1,0 +1,2 @@
+slime:False:2:2:1:1:A gelatinous blob;
+skeleton:False:10:8:3:2:A bony boi;
